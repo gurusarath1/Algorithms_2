@@ -21,6 +21,10 @@ alt="Guru Sarath T" width="72" height="72">
 
 - Counting Inversions nLog(n) (using merge sort)
 
-- Maximum Sub array nLog(n)(Divide and Conquer)
+- Maximum Sub array nLog(n)(D&C)
 
-- Longest Common sub sequence (Not Dynamic program)
+- Longest Common sub-sequence (Not Dynamic program & D&C)
+
+- Longest Common sub-sequence (Using DP approach & D&C)
+
+- Rod cutting (D&C)
