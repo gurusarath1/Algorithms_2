@@ -32,3 +32,5 @@ alt="Guru Sarath T" width="72" height="72">
 - Rod cutting (D&C & DP & Bottom-Up)
 
 - Nth Fibonacci Number (D&C & DP)
+
+- Sieve of Eratosthenes (n*loglog(n))
