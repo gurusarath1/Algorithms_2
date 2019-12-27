@@ -13,6 +13,8 @@ alt="Guru Sarath T" width="72" height="72">
 
 - Binary Search recursive (any element)
 
+- Insertion Sort
+
 - Quick Sort
 
 - Merge Sort
