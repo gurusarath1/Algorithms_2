@@ -36,3 +36,5 @@ alt="Guru Sarath T" width="72" height="72">
 - Nth Fibonacci Number (D&C & DP)
 
 - Sieve of Eratosthenes (n*loglog(n))
+
+- Gaussian Elimination (Iterative algorithm)
