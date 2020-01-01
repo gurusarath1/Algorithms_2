@@ -38,3 +38,5 @@ alt="Guru Sarath T" width="72" height="72">
 - Sieve of Eratosthenes (n*loglog(n))
 
 - Gaussian Elimination (Iterative algorithm)
+
+- Gauss-Jordan Elimination (Iterative algorithm)
