@@ -43,4 +43,4 @@ alt="Guru Sarath T" width="72" height="72">
 
 - Determinant (Recursive algorithm) (MY)
 
-- Hornor's method to evaluate polynomial (MY) (n)
+- Hornor's method to evaluate polynomial (DC) (MY) (n) 
