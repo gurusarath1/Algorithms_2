@@ -42,3 +42,5 @@ alt="Guru Sarath T" width="72" height="72">
 - Gauss-Jordan Elimination (Iterative algorithm) (MY)
 
 - Determinant (Recursive algorithm) (MY)
+
+- Hornor's method to evaluate polynomial (MY) (n)

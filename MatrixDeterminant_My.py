@@ -2,6 +2,7 @@ import numpy as np
 
 a = np.array(  [[1,-2,4],[-5,2,0],[1,0,3]]  )
 b = np.array( [[1,0,0],[0,1,0],[0,0,1]] )
+c = np.array( [[2,-1,3,0],[-3,1,0,4],[-2,1,4,1],[-1,3,0,-2]]   )
 
 def determinant(mat):
 	n = mat.shape[0]
@@ -23,5 +24,5 @@ def determinant(mat):
 	return det
 
 
-print(a)
-print( 'Det = ' , determinant(a))
+print(c)
+print( 'Det = ' , determinant(c) )
