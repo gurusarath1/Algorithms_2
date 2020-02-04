@@ -15,6 +15,8 @@ alt="Guru Sarath T" width="72" height="72">
 
 - Insertion Sort
 
+- Insertion Sort (Recursive) 
+
 - Quick Sort
 
 - Merge Sort
