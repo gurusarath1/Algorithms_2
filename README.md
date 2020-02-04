@@ -15,7 +15,7 @@ alt="Guru Sarath T" width="72" height="72">
 
 - Insertion Sort
 
-- Insertion Sort (Recursive) 
+- Insertion Sort (Recursive CLRS 3rd Edition Q: 2.3-4) 
 
 - Quick Sort
 
