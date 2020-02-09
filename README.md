@@ -50,3 +50,5 @@ alt="Guru Sarath T" width="72" height="72">
 - Hornor's method to evaluate polynomial (DC) (MY) (n) 
 
 - Greatest Common Divisor - GCD
+
+- Interval Partitioning algorithm (Optimal Greedy)
