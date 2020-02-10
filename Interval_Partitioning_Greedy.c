@@ -1,5 +1,6 @@
 #include <stdio.h>
 #define MAX_ROOMS 50
+#define START_TIME 0 // Offset
 
 typedef struct job {
 	float start_time;
@@ -25,36 +26,11 @@ int main()
 	}
 
 
-	printf("\n\nMiminum Number of Rooms Required = %d", interval_partition(listOfJobs, n) );
+	printf("\n\nMinimum Number of Rooms Required = %d", interval_partition(listOfJobs, n) );
 
-
-
-}
-
-
-void insertionSort_job(job a[], int size)
-{
-
-	job temp;
-	int j;
-
-	for(int i=1; i<size; i++)
-	{
-		if(a[i].start_time < a[i-1].start_time)
-		{
-			j = i;
-			while(a[j].start_time < a[j-1].start_time && j >= 1)
-			{
-				temp = a[j];
-				a[j] = a[j-1];
-				a[j-1] = temp;
-				j--;
-			}
-		}
-	}
+	return 0;
 
 }
-
 
 int interval_partition(job listOfJobs[], int numberofjobs) 
 {
@@ -64,7 +40,7 @@ int interval_partition(job listOfJobs[], int numberofjobs)
 	for(int i=0; i<MAX_ROOMS; i++)
 	{
 		//Available from start
-		roomAvailableTime[i] = 0;
+		roomAvailableTime[i] = START_TIME;
 	}
 
 	int minimumNumberOfRoomsRequired = 0;
@@ -96,3 +72,62 @@ int interval_partition(job listOfJobs[], int numberofjobs)
 
 	return minimumNumberOfRoomsRequired;
 }
+
+
+void insertionSort_job(job a[], int size)
+{
+
+	job temp;
+	int j;
+
+	for(int i=1; i<size; i++)
+	{
+		if(a[i].start_time < a[i-1].start_time)
+		{
+			j = i;
+			while(a[j].start_time < a[j-1].start_time && j >= 1)
+			{
+				temp = a[j];
+				a[j] = a[j-1];
+				a[j-1] = temp;
+				j--;
+			}
+		}
+	}
+
+}
+
+
+/*
+OUTPUT - 
+
+G:\Guru_Sarath\Study\C\DP>gcc Interval_Partitioning_Greedy.c
+
+G:\Guru_Sarath\Study\C\DP>a.exe
+JOB 1 : {-1.000000,10.000000}
+JOB 2 : {9.000000,10.500000}
+JOB 3 : {9.000000,12.500000}
+JOB 4 : {9.000000,10.500000}
+JOB 5 : {11.000000,14.000000}
+JOB 6 : {11.000000,12.500000}
+JOB 7 : {13.000000,14.500000}
+JOB 8 : {13.000000,14.500000}
+JOB 9 : {14.000000,17.000000}
+JOB 10 : {15.000000,16.500000}
+JOB 11 : {15.000000,16.500000}
+Job:1 : From -1.000000 To 10.000000 (Could not be scheduled !)
+Room:1 : Job:2 : From 9.000000 To 10.500000
+Room:2 : Job:3 : From 9.000000 To 12.500000
+Room:3 : Job:4 : From 9.000000 To 10.500000
+Room:1 : Job:5 : From 11.000000 To 14.000000
+Room:3 : Job:6 : From 11.000000 To 12.500000
+Room:2 : Job:7 : From 13.000000 To 14.500000
+Room:3 : Job:8 : From 13.000000 To 14.500000
+Room:1 : Job:9 : From 14.000000 To 17.000000
+Room:2 : Job:10 : From 15.000000 To 16.500000
+Room:3 : Job:11 : From 15.000000 To 16.500000
+
+
+Minimum Number of Rooms Required = 3
+
+*/
