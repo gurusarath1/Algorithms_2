@@ -52,3 +52,5 @@ alt="Guru Sarath T" width="72" height="72">
 - Greatest Common Divisor - GCD
 
 - Interval Partitioning algorithm (Optimal Greedy)
+
+- FFT (D&C)
