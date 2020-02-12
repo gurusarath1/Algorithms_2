@@ -29,7 +29,7 @@ void printArray(double* x, int size);
 int main()
 {
 
-	double a[] = {1,-1,3,-9,1,7,3,5};
+	double a[] = {1,2,-3,4,5,-6,7,8,9,-10,-11,-12,13,14,15,-16};
 	int size = sizeof(a) / sizeof(double);
 
 	
@@ -38,7 +38,7 @@ int main()
 	printf("\n-----\n");
 	for(int i=0; i<size; i++)
 	{
-		printPolar(Y[i], 1);
+		//printPolar(Y[i], 1);
 		printRect(PolarToRect(Y[i]), 1);
 	}
 	
@@ -95,14 +95,13 @@ ComplexNumber* FFT(double coeffs[], int size)
 	int n = size, n_half = size/2;
 	ComplexNumber *Y = (ComplexNumber*) malloc(sizeof(ComplexNumber) * size);
 	
-	printf("\n------------------\n");
-	printArray(coeffs, size);
+	//printf("\n------------------\n");
+	//printArray(coeffs, size);
 	for(int k=0; k<size_half; k++)
 	{
 
 		wk.magnitude = 1;
 		wk.angle = (-2 * PI * k) / n;
-
 
 		wk_x_dk.magnitude = wk.magnitude * D[k].magnitude; 
 		wk_x_dk.angle = wk.angle + D[k].angle;
@@ -117,12 +116,12 @@ ComplexNumber* FFT(double coeffs[], int size)
 
 
 		Y[k] = 	RectToPolar(ek_plus_wk_x_dk_2);
-		printPolar(Y[k], 1);
+		//printPolar(Y[k], 1);
 		Y[k + n_half] = RectToPolar(ek_minus_wk_x_dk_2);
-		printPolar(Y[k + n_half], 1);
+		//printPolar(Y[k + n_half], 1);
 	}
 
-	printf("\n------------------\n");
+	//printf("\n------------------\n");
 	return Y;
 }
 
@@ -147,10 +146,10 @@ ComplexNumber RectToPolar(ComplexNumber2 x)
 
 	C.magnitude = pow( pow(x.real,2) + pow(x.img,2) , 0.5 ); 
 
-	if(x.real != 0)
+	//if(x.real != 0)
 		C.angle = atan2(x.img , x.real);
-	else
-		C.angle = 0;
+	//else
+		//C.angle = 0;
 	//C.angle = atan(x.img / x.real);
 
 	return C;
