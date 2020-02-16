@@ -14,7 +14,7 @@ int main()
 	return 0;
 }
 
-
+// This is BOTTOM-UP algorithm 
 int cutRod(int L, int prices[])
 {
 	int max, printTableFlag = 1;
@@ -33,7 +33,7 @@ int cutRod(int L, int prices[])
 		optimalRevenue[i] = max;
 	}
 
-	
+	// Print the table generated
 	if(printTableFlag)
 	{
 		printf("\nOptimal Revenue Table ----------\n");
