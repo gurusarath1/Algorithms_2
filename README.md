@@ -31,9 +31,9 @@ alt="Guru Sarath T" width="72" height="72">
 
 - Longest Common sub-sequence (Using DP approach & D&C)
 
-- Rod cutting (D&C  Top-Down)
+- Rod cutting (DP Top-Down) 
 
-- Rod cutting (D&C & DP & Bottom-Up)
+- Rod cutting (DP Bottom-Up) (iterative)
 
 - Coin Change (DP)
 
