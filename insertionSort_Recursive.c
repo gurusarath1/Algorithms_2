@@ -23,6 +23,7 @@ int main()
 
 void insertionSort(DATA *a, int size)
 {
+	// Array with only one element is already sorted
 	if(size == 1)
 	{
 		return;
@@ -30,6 +31,7 @@ void insertionSort(DATA *a, int size)
 
 	insertionSort(a, size-1);
 
+	// Place the element in the correct location in the sorted array
 	DATA Element = a[size - 1];
 	int index = size - 2;
 	DATA temp;
