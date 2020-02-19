@@ -54,3 +54,5 @@ alt="Guru Sarath T" width="72" height="72">
 - Interval Partitioning algorithm (Optimal Greedy)
 
 - FFT (D&C)
+
+- Matrix Chain Multiplication (DP & Iterative)
