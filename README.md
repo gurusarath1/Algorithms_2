@@ -27,9 +27,11 @@ alt="Guru Sarath T" width="72" height="72">
 
 - Maximum Sub array nLog(n)(D&C)
 
-- Longest Common sub-sequence (Not Dynamic program & D&C)
+- Longest Common sub-sequence (DP No memo)
 
-- Longest Common sub-sequence (Using DP approach & D&C)
+- Longest Common sub-sequence (Using DP approach)
+
+- Longest Common sub-sequence (DP , Bottom Up)
 
 - Rod cutting (DP Top-Down) 
 
