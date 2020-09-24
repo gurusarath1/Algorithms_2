@@ -19,6 +19,9 @@ A linked list can be reversed either iteratively or recursively. Could you imple
  *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
+
+
+// Iterative Solution
 class Solution {
 public:
     ListNode* reverseList(ListNode* head) {
@@ -40,4 +43,33 @@ public:
         
         
     }
+};
+
+
+
+// Recursive Solution
+class Solution {
+public:
+    ListNode* reverseList(ListNode* head) {
+        
+        ListNode* node = head;
+        
+        if(node == nullptr) {
+            return node;
+        }
+        
+        if(node->next == nullptr) {
+            
+            return node;
+            
+        }
+        
+        ListNode* NewHead = reverseList(node->next);
+        node->next->next = node;
+        node->next = nullptr;
+        
+        return NewHead;
+        
+    }
+
 };
