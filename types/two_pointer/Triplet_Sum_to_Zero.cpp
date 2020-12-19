@@ -16,7 +16,7 @@ class TripletSumToZero {
     int target;
     sort(arr.begin(), arr.end());
 
-    for(int i=0; i<arr.size() - 3; i++) {
+    for(int i=0; i<arr.size() - 2; i++) {
 
       // Skip repeated numbers to ensure unique triplets
       while(arr[i] == arr[i-1]) {
@@ -54,12 +54,12 @@ class TripletSumToZero {
         pointer_2--;
 
         // Skip repeated numbers to ensure unique triplets
-        while(sorted_arr[pointer_1 - 1] == sorted_arr[pointer_1]) {
+        while(pointer_1 < pointer_2 && sorted_arr[pointer_1 - 1] == sorted_arr[pointer_1]) {
           pointer_1++;
         }
 
         // Skip repeated numbers to ensure unique triplets
-        while(sorted_arr[pointer_2 + 1] == sorted_arr[pointer_2]) {
+        while(pointer_1 < pointer_2 && sorted_arr[pointer_2 + 1] == sorted_arr[pointer_2]) {
           pointer_2--;
         }
 
