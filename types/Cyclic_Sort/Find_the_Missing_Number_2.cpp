@@ -11,7 +11,7 @@ using namespace std;
 class MissingNumber {
  public:
   static int findMissingNumber(vector<int> &nums) {
-    // Hasing Method
+    // XOR Method
     int missing_num = 0;
 
     for(int num : nums) {
