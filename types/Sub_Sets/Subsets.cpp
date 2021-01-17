@@ -16,15 +16,15 @@ class Subsets {
   static void support_findSubsets(const vector<int>& nums, int current_index, vector<int> &current_set, vector<vector<int>> &subsets) {
 
     if(current_index > nums.size() - 1) {
-      subsets.push_back(current_set);
+      subsets.push_back(current_set); // Push the formed set
       return;
     }
 
-    support_findSubsets(nums, current_index+1, current_set, subsets);
+    support_findSubsets(nums, current_index+1, current_set, subsets); // Dont include the number in the set
 
     current_set.push_back(nums[current_index]);
 
-    support_findSubsets(nums, current_index+1, current_set, subsets);
+    support_findSubsets(nums, current_index+1, current_set, subsets); // include the number in the set
 
     current_set.erase(current_set.end() - 1);
 
