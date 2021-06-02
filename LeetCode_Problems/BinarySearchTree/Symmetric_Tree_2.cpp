@@ -39,11 +39,11 @@ public:
             if(node1 == nullptr || node2 == nullptr) return false;
             if(node1->val != node2->val) return false;
             
-            if(node1 != nullptr) node_queue.push(node1->left);
-            if(node2 != nullptr) node_queue.push(node2->right);
+            node_queue.push(node1->left);
+            node_queue.push(node2->right);
             
-            if(node2 != nullptr) node_queue.push(node2->left);
-            if(node1 != nullptr) node_queue.push(node1->right);
+            node_queue.push(node2->left);
+            node_queue.push(node1->right);
             
         }
         
