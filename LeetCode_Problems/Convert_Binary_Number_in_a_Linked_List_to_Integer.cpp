@@ -15,9 +15,7 @@ public:
         if(head == nullptr) return 0;
         
         int value = 0;
-        
         support_getDecimalValue(head, value);
-        
         return value;
         
     }
@@ -28,10 +26,8 @@ public:
             return -1;
         }
         
-        int current_level = support_getDecimalValue(node->next, value);
-        
+        int current_level = support_getDecimalValue(node->next, value); // position of the element from the end (starting from 0)
         value += (node->val) * pow(2, 1 + current_level);
-        
         return 1 + current_level;
         
     }
