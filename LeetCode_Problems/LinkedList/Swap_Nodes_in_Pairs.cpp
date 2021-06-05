@@ -16,7 +16,7 @@ public:
         
         ListNode* prev_node = nullptr;
         ListNode* node = head;
-        ListNode* NewHead = head->next;
+        ListNode* NewHead = head->next; // New head is always the second node
         ListNode* node1;
         ListNode* node2;
         ListNode* node3;
@@ -25,14 +25,14 @@ public:
             
             node1 = node;
             node2 = node1->next;
-            
             if(node2 == nullptr) break;
-            
             node3 = node2->next;
             
+            // Swap the nodes
             node2->next = node1;
             node1->next = node3;
             
+            // Link the left chain to the new swapped nodes
             if(prev_node != nullptr) prev_node->next = node2;
             
             prev_node = node;
