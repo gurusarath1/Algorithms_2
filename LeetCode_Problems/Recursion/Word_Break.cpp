@@ -34,8 +34,6 @@ public:
                 if(result) {
                     memo[remainingString] = true;
                     return true;
-                } else {
-                    memo[remainingString] = false;
                 }
 
             }
