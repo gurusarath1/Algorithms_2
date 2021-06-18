@@ -31,9 +31,13 @@ public:
                 string remainingString = s.substr(str_length, s.size() - str_length);
                 bool result = support_wordBreak(remainingString, wordSet, memo);
                 
-                if(result) memo[remainingString] = true;
-                
-                if(result) return true;
+                if(result) {
+                    memo[remainingString] = true;
+                    return true;
+                } else {
+                    memo[remainingString] = false;
+                }
+
             }
             
         }
