@@ -31,11 +31,11 @@ public:
                     
                     vector<int> possible_next = { current_node[0] + vec[0] , current_node[1] + vec[1] };
 
-                    if(possible_next[0] >= 0 && possible_next[1] >= 0) {
-                        if(possible_next[0] < grid.size() && possible_next[1] < grid[0].size()) {
-                            if( grid[possible_next[0]][possible_next[1]] == 0) {
-                                if(visited.find(possible_next) == visited.end()) {
-                                    visited.insert(possible_next);
+                    if(possible_next[0] >= 0 && possible_next[1] >= 0) { // Check bounds of grid
+                        if(possible_next[0] < grid.size() && possible_next[1] < grid[0].size()) { // Check bounds of grid
+                            if( grid[possible_next[0]][possible_next[1]] == 0) { // Check if cell is empty 
+                                if(visited.find(possible_next) == visited.end()) { // Check if it is not already added to queue
+                                    visited.insert(possible_next); // Mark as visited so as to not add it again to the queue
                                     q.push(possible_next);
                                 }
                             }
