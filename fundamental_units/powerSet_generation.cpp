@@ -34,10 +34,10 @@ void generatePowerSet_support(vector<int> &input_set, vector<int> &current_set, 
         return;
     }
     
-    // Take the current element into the set
+    // Don't take the current element into the set
     generatePowerSet_support(input_set, current_set, power_set, current_index + 1);
     
-    // Don't take the current element into the set
+    // Take the current element into the set
     current_set.push_back(input_set[current_index]);
     generatePowerSet_support(input_set, current_set, power_set, current_index + 1);
     current_set.pop_back();
