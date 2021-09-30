@@ -23,6 +23,7 @@ public:
         
         while(!s.empty()) {
             
+            // First condition it doesnt count twice when the top element is p or q after going deep in the tree and poping and coming out.
             if(s.top().first != LCA && (s.top().first == p || s.top().first == q) ) {
                 
                 p_q_found++;
