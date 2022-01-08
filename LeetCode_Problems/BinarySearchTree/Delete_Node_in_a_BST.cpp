@@ -27,7 +27,7 @@ public:
                 // Does not contain only left
                 return root->right;
             } else {
-                // Only contains right tree
+                // Only contains right and left
                 TreeNode* smallestNodeOnRightTree = smallestNode(root->right);
                 root->right = deleteNode(root->right, smallestNodeOnRightTree->val);
                 root->val = smallestNodeOnRightTree->val;
