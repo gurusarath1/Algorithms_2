@@ -10,8 +10,6 @@ public:
             prefixXor.push_back(xorX);
         }
         
-        prefixXor.push_back(xorX);
-        
         vector<int> result;
         for(vector<int> query : queries) {
             
