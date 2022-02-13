@@ -27,7 +27,7 @@ public:
         
         vector<vector<int>> next_vecs = { {0,1}, {1,0}, {-1,0}, {0,-1} };
         
-        // BFS
+        // Multisource BFS
         int current_time = 0;
         while(!q.empty() && num_fresh_oranges > 0) {
             
