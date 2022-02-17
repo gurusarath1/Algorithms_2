@@ -5,7 +5,7 @@ public:
         vector<int> nodes(n+1,INT_MAX);
         
         nodes[k] = 0;
-        
+        // Bellmanford algorithm
         for(int i=0; i<n-1; i++) {
             for(vector<int> edge : times) {
                 int current_best_dist = nodes[edge[1]];
