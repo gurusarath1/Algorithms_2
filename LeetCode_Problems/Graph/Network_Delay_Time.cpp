@@ -5,8 +5,9 @@ public:
         vector<int> nodes(n+1,INT_MAX);
         
         nodes[k] = 0;
-        // Bellmanford algorithm
+        //Bellman ford algo
         for(int i=0; i<n-1; i++) {
+            bool no_update = true;
             for(vector<int> edge : times) {
                 int current_best_dist = nodes[edge[1]];
                 int new_dist;//nodes[edge[0]] + edge[2];
@@ -18,8 +19,11 @@ public:
                 
                 if(new_dist < current_best_dist) {
                     nodes[edge[1]] = new_dist;
+                    no_update = false;
                 }
             }
+            
+            if(no_update) break; //It may not be always required to run N-1 times
         }
         
         int max_dist = INT_MIN;
