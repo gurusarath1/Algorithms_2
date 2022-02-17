@@ -31,6 +31,8 @@ public:
         vertex_info_table[k].first = 0;
         vertex_info_table[k].second = -1;
         
+        //Dijkstra's algo
+        
         while(!pq.empty()) {
             
             pair<int,int> current_node_ = pq.top();
