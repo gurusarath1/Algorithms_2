@@ -54,7 +54,7 @@ int partition(DATATYPE a[], int low, int high)
 			j--;
 		}while(a[j] > pivot);
 
-		if(a[i] < a[j])
+		if(i < j)
 		{
 			swap(&a[i], &a[j]);
 		}
