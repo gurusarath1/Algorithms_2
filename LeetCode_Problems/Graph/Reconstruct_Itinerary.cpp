@@ -1,51 +1,51 @@
-/*
-// Definition for a Node.
-class Node {
-public:
-    int val;
-    vector<Node*> neighbors;
-    Node() {
-        val = 0;
-        neighbors = vector<Node*>();
-    }
-    Node(int _val) {
-        val = _val;
-        neighbors = vector<Node*>();
-    }
-    Node(int _val, vector<Node*> _neighbors) {
-        val = _val;
-        neighbors = _neighbors;
-    }
-};
-*/
-
 class Solution {
 public:
     
-    map<Node*,Node*> visited;
+    vector<string> result;
+    set<pair<string, string>> visited;
+    map<pair<string, string>, int> repeated_edge_counts; // We can have repeated edges in this problem hence a simple visited array is not enough
+    int N;
     
-    Node* cloneGraph(Node* node) {
-        return traverse(node);
-    }
-    
-    Node* traverse(Node* node) {
+    vector<string> findItinerary(vector<vector<string>>& tickets) {
         
-        if(node == nullptr) return nullptr;
+        map<string, vector<string>> graphX;
         
-        Node* new_node = new Node(node->val);
-        visited[node] = new_node;
+        N = tickets.size();
         
-        for(int i=0; i<(node->neighbors).size(); i++) {
-            
-            if(visited.find((node->neighbors)[i]) == visited.end()) {
-                Node* _n = traverse((node->neighbors)[i]);
-                if(_n != nullptr) new_node->neighbors.push_back(_n);
-            } else {
-                (new_node->neighbors).push_back( visited[(node->neighbors)[i]] );
-            }
-            
+        for(vector<string> ticket : tickets) {
+            graphX[ticket[0]].push_back(ticket[1]);
+            repeated_edge_counts[ {ticket[0], ticket[1]} ] += 1;
         }
         
-        return new_node;
+        for(vector<string> sv : tickets) {
+            sort( graphX[sv[0]].begin(), graphX[sv[0]].end() );
+        }
+        
+        dfs(graphX, "JFK", 0);
+        
+        reverse(result.begin(), result.end());
+        
+        return result;
+        
+    }
+    
+    
+    void dfs(map<string, vector<string>> &graphX, string current_node, int edge_num) {
+        
+        for(string next_node : graphX[current_node]) {
+            
+            if(visited.find( {current_node, next_node} ) == visited.end()) {
+                
+                repeated_edge_counts[ {current_node, next_node} ] -= 1;
+                
+                if(repeated_edge_counts[ {current_node, next_node} ] <= 0) visited.insert( {current_node, next_node} );
+                
+                dfs(graphX, next_node, edge_num + 1);
+            }
+
+        }
+        
+        result.push_back(current_node);
+        
     }
 };
