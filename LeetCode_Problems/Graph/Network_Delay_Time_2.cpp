@@ -1,79 +1,57 @@
 class Solution {
-    
-   class Compare
-    {
-    public:
-        bool operator() (pair<double,int> a, pair<double,int> b)
-        {
-            return a.second > b.second;
-        }
-    };
-    
 public:
+    
+    static bool compare(pair<int,int> a, pair<int,int> b) {
+        return a.second > b.second;
+    }
+    
     int networkDelayTime(vector<vector<int>>& times, int n, int k) {
         
-        priority_queue< pair<int,int>, vector<pair<int,int>>, Compare > pq; // first = node name; second = best node dist
-        map<int, pair<int,int>> vertex_info_table; // node -> best dist, came from
-        map<int, set<pair<int,int>> > graphX; // node -> node_next, weight
-        set<int> visited;
-        int max_delay = INT_MIN;
-        
-        for(int node = 1; node<=n; node++) {
-            vertex_info_table[node].first = INT_MAX; // best dist
-            vertex_info_table[node].second = -1; // parent
-        }
+        map< int, vector<pair<int,int>> > graphX;
         
         for(vector<int> edge : times) {
-            graphX[edge[0]].insert({edge[1], edge[2]});
+            //     from                 to     ,  weight
+            graphX[edge[0]].push_back( {edge[1], edge[2]} );
         }
         
-        pq.push({k,0});
-        vertex_info_table[k].first = 0;
-        vertex_info_table[k].second = -1;
+        int max_dist = INT_MIN;
         
         //Dijkstra's algo
+        int start_node = k;
+        map<int,int> completed_nodes;
+        priority_queue<pair<int,int>, vector<pair<int,int>>, function<bool(pair<int,int>, pair<int,int>)> > pq(compare);
+        pq.push( {start_node, 0} );
         
         while(!pq.empty()) {
-            
-            pair<int,int> current_node_ = pq.top();
-            int current_node = current_node_.first;
-            int current_node_best_dist = current_node_.second;
+            pair<int,int> node_and_dist = pq.top();
             pq.pop();
             
-            for(set<pair<int,int>>::iterator it = graphX[current_node].begin(); it != graphX[current_node].end(); it++) {
+            int current_node = node_and_dist.first;
+            int current_node_dist = node_and_dist.second;
+            
+            // Check if the node was already completed.
+            if(completed_nodes.find(current_node) != completed_nodes.end()) continue;
+            
+            completed_nodes[current_node] = current_node_dist;
+            
+            if(max_dist < current_node_dist) max_dist = current_node_dist;
+            
+            
+            for(pair<int,int> next_node_and_weight : graphX[current_node]) {
+                int next_node = next_node_and_weight.first;
+                int next_node_dist = current_node_dist + next_node_and_weight.second;
                 
-                pair<int,int> next_node_ = *it;
-                int next_node = next_node_.first;
-                int next_node_w = next_node_.second;
-                
-                if(vertex_info_table[next_node].second == current_node) continue;
-                //if(visited.find(next_node) != visited.end()) continue;
-                
-                int next_node_dist = next_node_w + current_node_best_dist;
-                int next_node_current_best_dist = vertex_info_table[next_node].first;
-                
-                if(next_node_dist < next_node_current_best_dist) {
-                    vertex_info_table[next_node].first = next_node_dist;
-                    vertex_info_table[next_node].second = current_node;
-                    pq.push({next_node, next_node_dist});
-                    
-                    //if(max_delay < next_node_dist) max_delay = next_node_dist;
+                if(completed_nodes.find(next_node) == completed_nodes.end()) {
+                    pq.push( {next_node, next_node_dist} );
                 }
                 
             }
             
-            //visited.insert(current_node);
-            
         }
         
-        for(int node = 1; node<=n; node++) {
-            int node_dist_from_k = vertex_info_table[node].first;
-            if(max_delay < node_dist_from_k) max_delay = node_dist_from_k;
-        }
+        if(completed_nodes.size() < n) return -1;
         
-        if(max_delay == INT_MAX) return -1;
-        
-        return max_delay;
+        return max_dist;
         
     }
 };
