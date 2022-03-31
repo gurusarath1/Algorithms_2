@@ -44,15 +44,8 @@ public:
     
     string smallestEquivalentString(string s1, string s2, string baseStr) {
         
-        set<char> unique_chars;
         int str_size = s1.size();
         
-        for(int i=0; i<str_size; i++) {
-            unique_chars.insert(s1[i]);
-            unique_chars.insert(s2[i]);
-        }
-        
-        int n = unique_chars.size();
         UnionFind uf('z' - 'a' + 1);
         
         for(int i=0; i<str_size; i++) {
@@ -62,11 +55,6 @@ public:
         string ansStr = "";
         
         for(char c : baseStr) {
-            
-            if(unique_chars.find(c) == unique_chars.end()) {
-                ansStr += c;
-                continue;
-            }
             
             ansStr += (char)uf.find(c - 'a') + 'a';
         }
