@@ -3,4 +3,4 @@ Largest Perimeter Triangle                        ,E,the array can contain more 
 Count Odd Numbers in an Interval Range            ,E,Only first and last digits matter
 Check If It Is a Straight Line                    ,E,Bet careful about divide by 0
 Sum of All Odd Length Subarrays                   ,E,Just do it before; [Prefix Sum] or brute force
-Move Zeroes                                       ,E,[Two Pointer] Must do
+Move Zeroes                                       ,E,[Two Pointer] Must do, A simple realization is if the current element is non-0, its' correct position can at best be it's current position or a position earlier.
