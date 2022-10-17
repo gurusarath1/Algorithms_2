@@ -1,4 +1,5 @@
-Happy Number - Cycle Detection - use set
-Largest Perimeter Triangle - the array can contain more than 3 elements - sort - check if triangel form last three number
-Count Odd Numbers in an Interval Range - Only first and last digits matter
-Check If It Is a Straight Line - Bet careful about divide by 0
+Happy Number - Cycle Detection                    - use set
+Largest Perimeter Triangle                        - the array can contain more than 3 elements - sort - check if triangel form last three number
+Count Odd Numbers in an Interval Range            - Only first and last digits matter
+Check If It Is a Straight Line                    - Bet careful about divide by 0
+Sum of All Odd Length Subarrays                   - Just do it before; Prefix sum or brute force
