@@ -7,3 +7,4 @@ Sum of All Odd Length Subarrays                   ,E,Just do it before; [Prefix 
 Find the Difference                               ,E,Used [Multiset] from C++. Do it to just get a proper review of multiset
 +Next Greater Element I                           ,E,[Stack] Must do
 To Lower Case                                     ,E,[String] Learn to convert string to lower in ascii
++Verifying an Alien Dictionary                    ,E,Best problem to understand sorting
