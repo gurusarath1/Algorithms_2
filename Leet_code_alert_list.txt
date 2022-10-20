@@ -9,3 +9,4 @@ Find the Difference                               ,E,Used [Multiset] from C++. D
 To Lower Case                                     ,E,[String] Learn to convert string to lower in ascii
 +Verifying an Alien Dictionary                    ,E,Best problem to understand sorting
 +Implement Queue using Stacks                     ,E,[Stack] You can do it with just one stack !
+Valid Anagram                                     ,E,Sort it
