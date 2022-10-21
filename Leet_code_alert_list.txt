@@ -15,3 +15,8 @@ Valid Anagram                                     ,E,Sort it
 Recursion--------------------------------------------------------------------------
 
 +++Different Ways to Add Parentheses              ,M,Must Do
+
+
+Graphs-----------------------------------------------------------------------------
+
+++Longest Increasing Path in a Matrix             ,H, DFS+Memo
