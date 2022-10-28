@@ -20,3 +20,8 @@ Recursion-----------------------------------------------------------------------
 Graphs-----------------------------------------------------------------------------
 
 ++Longest Increasing Path in a Matrix             ,H, DFS+Memo
+
+
+
+Trees------------------------------------------------------------------------------
+Balanced Binary Tree                              ,E,You have to test all the nodes for balance check
