@@ -25,3 +25,7 @@ Graphs--------------------------------------------------------------------------
 
 Trees------------------------------------------------------------------------------
 Balanced Binary Tree                              ,E,You have to test all the nodes for balance check
+
+
+Pattern Matching-------------------------------------------------------------------
+Repeated Substring Pattern                        ,E, KMP algo
