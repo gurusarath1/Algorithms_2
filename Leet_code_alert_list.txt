@@ -16,6 +16,10 @@ stack---------------------------------------------------------------------------
 +Implement Queue using Stacks                      ,E,[Stack] You can do it with just one stack !
 
 
+Map -------------------------------------------------------------------------------
+K Closest Points to Origin       ,M, Be careful about points with same distance from origin while using map, use multimap or map<double, vector<vector<int>> >
+
+
 Recursion--------------------------------------------------------------------------
 +++Different Ways to Add Parentheses              ,M,Must Do
 
