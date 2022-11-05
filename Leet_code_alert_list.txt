@@ -8,6 +8,7 @@ Find the Difference                               ,E,Used [Multiset] from C++. D
 To Lower Case                                     ,E,[String] Learn to convert string to lower in ascii
 ++Verifying an Alien Dictionary                   ,E,Best problem to understand sorting
 Valid Anagram                                     ,E,Sort it
+Spiral Matrix                                     ,M, Check if you reached the center by counter number of elements you pushed backed to result vector.
 
 stack-----------------------------------------------------------------------------
 ++Next Greater Element I                           ,E, Must do
