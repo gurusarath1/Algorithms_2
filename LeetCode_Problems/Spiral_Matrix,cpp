@@ -1,0 +1,64 @@
+class Solution {
+public:
+
+    #define UP    1
+    #define DOWN  2
+    #define LEFT  3
+    #define RIGHT 4
+
+    vector<int> spiralOrder(vector<vector<int>>& matrix) {
+
+        int i = 0;
+        int j = 0;
+        int direction = RIGHT;
+        vector<int> result;
+
+        int num_elements = matrix.size() * matrix[0].size();
+
+        int max_right = matrix[0].size() - 1;
+        int min_left = 0;
+        int max_down = matrix.size() - 1;
+        int min_up = 1;
+
+        while(1) {
+
+            if(direction == RIGHT) {
+                if(j == max_right) {
+                    max_right--;
+                    direction = DOWN;
+                } else {
+                    result.push_back(matrix[i][j]);
+                    j++;
+                }
+            } else if(direction == DOWN) {
+                if(i == max_down) {
+                    max_down--;
+                    direction = LEFT;
+                } else {
+                    result.push_back(matrix[i][j]);
+                    i++;
+                }
+            } else if(direction == LEFT) {
+                if(j == min_left) {
+                    min_left++;
+                    direction = UP;
+                } else {
+                    result.push_back(matrix[i][j]);
+                    j--;
+                }
+            } else if(direction == UP) {
+                if(i == min_up) {
+                    min_up++;
+                    direction = RIGHT;
+                } else {
+                    result.push_back(matrix[i][j]);
+                    i--;
+                }
+            }
+
+            if(num_elements <= result.size()) break;
+        }
+        
+        return result;
+    }
+};
