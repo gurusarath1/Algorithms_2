@@ -9,6 +9,7 @@ To Lower Case                                     ,E,[String] Learn to convert s
 ++Verifying an Alien Dictionary                   ,E,Best problem to understand sorting
 Valid Anagram                                     ,E,Sort it
 Spiral Matrix                                     ,M, Check if you reached the center by counter number of elements you pushed backed to result vector.
+Arithmetic Subarrays                              ,M, Soltion without sorting is good to try
 
 stack-----------------------------------------------------------------------------
 ++Next Greater Element I                           ,E, Must do
