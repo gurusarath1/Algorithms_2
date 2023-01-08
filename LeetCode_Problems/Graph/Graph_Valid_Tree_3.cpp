@@ -1,7 +1,6 @@
 class Solution {
 public:
 
-    set<int> all_visited_nodes;
 
     bool validTree(int n, vector<vector<int>>& edges) {
 
@@ -18,14 +17,11 @@ public:
         bool cycle_flag = dfs(-1, 0, visited_set, graph);
 
         // Check if it is a forest
-        return cycle_flag && (all_visited_nodes.size() == n);
+        return cycle_flag && (visited_set.size() == n);
         
     }
 
     bool dfs(int prev_node, int current_node, set<int> &visited_nodes, map<int, vector<int>> &graph) {
-
-        // Count all visited nodes
-        all_visited_nodes.insert(current_node);
 
         if(visited_nodes.find(current_node) != visited_nodes.end()) {
             // Cycle detected
@@ -47,8 +43,6 @@ public:
             // Return if cycle was detected down this path
             if(res == false) return false;
         }
-
-        visited_nodes.erase(current_node);
 
         // No cycle detected along this path
         return true;
