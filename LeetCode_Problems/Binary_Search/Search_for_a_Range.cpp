@@ -1,56 +1,51 @@
 class Solution {
 public:
     vector<int> searchRange(vector<int>& nums, int target) {
-        
-        int start = -1;
-        int end = -1;
-        
-        int left = 0;
-        int right = nums.size()-1;
-        
-        while(left <= right) {
-            
-            int mid = left + (right - left) / 2;
-            
-            if(mid > 0 && nums[mid] == target && nums[mid - 1] != target) {
-                start = mid;
-                break;
-            } else if ( mid == 0 && nums[mid] == target) {
-                start = mid;
-                break;
-            }
-            
+
+        vector<int> ret;
+
+
+        int low = 0;
+        int high = nums.size() - 1;
+
+        while(low <= high) {
+
+            int mid = low + (high - low) / 2;
+
             if(nums[mid] >= target) {
-                right = mid - 1;
+                high = mid - 1;
             } else {
-                left = mid + 1;
+                low = mid + 1;
             }
-            
+
         }
-        
-        left = 0;
-        right = nums.size() - 1;
-        while(left <= right) {
-            
-            int mid = left + (right - left) / 2;
-            
-            if(mid < nums.size() - 1 && nums[mid] == target && nums[mid + 1] != target) {
-                end = mid;
-                break;
-            } else if ( mid == nums.size() - 1 && nums[mid] == target) {
-                end = mid;
-                break;
-            }
-            
-            if(nums[mid] > target) {
-                right = mid - 1;
+
+        if(low < nums.size() && nums[low] == target) {
+            ret.push_back(low);
+        }  else {
+            ret.push_back(-1);
+            ret.push_back(-1);
+            return ret;
+        }
+
+        low = 0;
+        high = nums.size() - 1;
+
+        while(low <= high) {
+
+            int mid = low + (high - low) / 2;
+
+            if(nums[mid] <= target) {
+                low = mid + 1;
             } else {
-                left = mid + 1;
+                high = mid - 1;
             }
-            
+
         }
-        
-        
-        return {start, end};
+
+        ret.push_back(high);
+
+
+        return ret;
     }
 };
