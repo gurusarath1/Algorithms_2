@@ -16,7 +16,16 @@ public:
             }
         }
 
-        return low + k;
+        // Missing number is at the start of the array
+        // Array starts with a value greater than k
+        if(high == -1) {
+            return k;
+        }
+
+        //Now the missing number is between the high and low index
+        // arr[high] + (Number remaining elements)
+        // arr[high] + (k - Num missing to the left)
+        return arr[high] + k - (arr[high] - high - 1);
         
     }
 };
