@@ -1,46 +1,56 @@
 class Solution {
 public:
     vector<int> searchRange(vector<int>& nums, int target) {
-        
-        int first_index = -1, last_index = -1;
-        
-        int start = 0;
-        int end = nums.size() - 1;
-        int mid;
-        
-        // Find first index
-        while(start <= end) {
-            
-            mid = start + (end - start) / 2;
-            
+
+        vector<int> ret;
+
+        int start_index = get_start_index(nums, target);
+        int end_index = get_end_index(nums, target);
+
+        ret.push_back(start_index);
+        ret.push_back(end_index);
+
+        return ret;
+    }
+
+    int get_start_index(vector<int>& nums, int target) {
+        int low = 0;
+        int high = nums.size() - 1;
+
+        while(low <= high) {
+            int mid = low + (high - low) / 2;
+
             if(nums[mid] >= target) {
-                if(nums[mid] == target) first_index = mid;
-                end = mid - 1;
+                high = mid - 1;
             } else {
-                start = mid + 1;
+                low = mid + 1;
             }
-            
+
         }
-        
-        if(first_index == -1) return vector<int>{-1,-1};
-        
-        // Find the last index
-        start = first_index;
-        end = nums.size() - 1;
-        while(start <= end) {
-            
-            mid = start + (end - start) / 2;
-            
-            if(nums[mid] <= target) {
-                if(nums[mid] == target) last_index = mid;
-                start = mid + 1;
+        if(low == nums.size()) return -1;
+        if(nums[low] != target) return -1;
+
+        return low;
+    }
+
+    int get_end_index(vector<int>& nums, int target) {
+        int low = 0;
+        int high = nums.size() - 1;
+
+        while(low <= high) {
+            int mid = low + (high - low) / 2;
+
+            if(nums[mid] > target) {
+                high = mid - 1;
             } else {
-                end = mid - 1;
+                low = mid + 1;
             }
-            
+
         }
-        
-        return vector<int>{first_index, last_index};
-        
+
+        if(high == -1) return -1;
+        if(nums[high] != target) return -1;
+
+        return high;
     }
 };
