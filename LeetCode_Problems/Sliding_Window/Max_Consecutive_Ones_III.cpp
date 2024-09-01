@@ -1,53 +1,44 @@
 class Solution {
 public:
     int longestOnes(vector<int>& nums, int k) {
-        
-        int start = 0;
-        int end = 0;
-        int num_zeros = 0;
-        int result = 0;
-        int end_inced = 0;
-        
-        while(1) {
-            
-            if(nums[end] == 0) {
-                
-                if(num_zeros >= k) {
-                    while(nums[start] != 0) {
-                        start++;
-                    }
-                    start++;
-                    num_zeros--;
-                    
-                    result = max(result, end - start + 1);
-                    
-                } else {
-                    num_zeros++;
-                    end_inced = 0;
-                    if(end < nums.size() - 1) { end_inced = 1; end++; }
-                    if(end_inced && nums[end] == 0 && num_zeros >= k)
-                        result = max(result, end - start);
-                    else
-                        result = max(result, end - start+1);
+
+        int ptr1 = 0;
+        int ptr2 = 0;
+        int num_zeros_in_window = 0;
+        int ans = 0;
+
+        while(ptr2 < nums.size()) {
+
+            if(nums[ptr2] == 1 && num_zeros_in_window <= k) { // 1
+                ptr2 ++;
+                ans = max(ans, ptr2 - ptr1);
+            } else if(nums[ptr2] == 1) { // 1
+                ptr2 ++;
+                if(nums[ptr1] == 0) {
+                    num_zeros_in_window--;
                 }
-                
-                
-            } else {
-                    end_inced = 0;
-                    if(end < nums.size() - 1) { end_inced = 1; end++; }
-                
-                if(end_inced && nums[end] == 0 && num_zeros >= k)
-                    result = max(result, end - start);
-                else
-                    result = max(result, end - start+1);
+                ptr1 ++;
+            } else { // 0
+
+                if(num_zeros_in_window < k) {
+                    num_zeros_in_window++;
+                    ptr2++;
+                    ans = max(ans, ptr2 - ptr1);
+                } else {
+                    num_zeros_in_window++;
+                    ptr2++;
+                    if(nums[ptr1] == 0) {
+                        num_zeros_in_window--;
+                    }
+                    ptr1++;
+
+                }
+
             }
-            
-            
-            
-            if(end == nums.size() - 1) break;
-            
+
         }
+
+        return ans;
         
-        return result;
     }
 };
