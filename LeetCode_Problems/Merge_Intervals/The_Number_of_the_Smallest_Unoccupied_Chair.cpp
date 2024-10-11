@@ -52,10 +52,10 @@ public:
 
             /*
                 vector format in pq -----
-                times[0] = start time
-                times[1] = end time
-                times[2] = person index
-                times[3] = seat of person
+                times[x][0] = start time
+                times[x][1] = end time
+                times[x][2] = person index
+                times[x][3] = seat of person
             */
 
             available_seats.pop();
