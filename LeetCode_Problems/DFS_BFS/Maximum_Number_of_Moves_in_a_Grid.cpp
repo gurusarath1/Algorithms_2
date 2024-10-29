@@ -13,6 +13,7 @@ public:
         int max_moves = 0;
         for(int i=0; i<num_rows; i++) {
             int moves_form_here = support_maxMoves(grid, memo, i, 0);
+            if(max_c_reached) return num_cols-1;
             max_moves = max(moves_form_here, max_moves);
         }
         
