@@ -11,95 +11,46 @@
 class Solution {
 public:
     ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
-        
-        queue<int> num1;
-        queue<int> num2;
-        queue<int> result;
-        
-        while(l1 != nullptr) {
-            num1.push(l1->val);
-            l1 = l1->next;
-        }
-        
-        while(l2 != nullptr) {
-            num2.push(l2->val);
-            l2 = l2->next;
-        }
-        
-        int carry = 0;
-        int sum;
-        while(!num1.empty() && !num2.empty()) {
-            
-            int digit_1 = num1.front();
-            num1.pop();
-            int digit_2 = num2.front();
-            num2.pop();
-            
-            sum = digit_1 + digit_2 + carry;
-            
+
+        int cry = 0;
+        ListNode* prev = NULL;
+        ListNode* head = NULL;
+        while(l1 || l2) {
+
+            int num1 = 0;
+            int num2 = 0;
+
+            if(l1) num1 = l1->val;
+            if(l2) num2 = l2->val;
+
+            int sum = num1 + num2 + cry;
+            int dig = 0;
             if(sum > 9) {
-                carry = 1;
-                sum = sum % 10;
-            }  else {
-                carry = 0;
-            }
-            
-            result.push(sum);
-        }
-        
-        while(!num1.empty()) {
-            
-            int digit_1 = num1.front();
-            num1.pop();
-            
-            sum = digit_1 + carry;
-            
-            if(sum > 9) {
-                carry = 1;
-                sum = sum % 10;
-            }  else {
-                carry = 0;
-            }
-            
-            result.push(sum);
-        }
-        
-        while(!num2.empty()) {
-            
-            int digit_2 = num2.front();
-            num2.pop();
-            
-            sum = digit_2 + carry;
-            
-            if(sum > 9) {
-                carry = 1;
-                sum = sum % 10;
-            }  else {
-                carry = 0;
-            }
-            
-            result.push(sum);
-        }
-        
-        if(carry == 1) {
-            result.push(1);
-        }
-        
-        ListNode* head;
-        ListNode* prev_node = nullptr;
-        while(!result.empty()) {
-            ListNode* digit = new ListNode(result.front(), nullptr);
-            result.pop();
-            
-            if(prev_node == nullptr) {
-                prev_node = digit;
-                head = digit;
+                dig = sum - 10;
+                cry = 1;
             } else {
-                prev_node->next = digit;
-                prev_node = digit;
+                dig = sum;
+                cry = 0;
             }
+            ListNode* digit = new ListNode(dig);
+
+            if(prev != NULL) {
+                prev->next = digit;
+            } else {
+                head = digit;
+            }
+
+            prev = digit;
+
+            if(l1) l1 = l1->next;
+            if(l2) l2 = l2->next;
         }
-        
+
+        if(cry) {
+            ListNode* digit = new ListNode(1);
+            prev->next = digit;
+        }
+
         return head;
     }
 };
