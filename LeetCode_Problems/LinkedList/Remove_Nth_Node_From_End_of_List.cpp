@@ -12,28 +12,31 @@ class Solution {
 public:
     ListNode* removeNthFromEnd(ListNode* head, int n) {
         
-        ListNode* fast_ptr = head;
-        ListNode* slow_ptr = head;
-        
-        if(head == nullptr) return nullptr;
-        if(head->next == nullptr) return nullptr; // Single element linked list
-        
-        for(int i=0; i<n; i++) {
-            fast_ptr = fast_ptr->next;
+        ListNode* nth_node = head;
+        ListNode* last_node = head;
+        ListNode* n_minus_one_node = NULL;
+
+        int i=1;
+        while(head) {
+            if(i<n) {
+                last_node = last_node->next;
+            } else {
+
+                if(last_node->next == NULL) break; // Reached last node
+                n_minus_one_node = nth_node;
+                nth_node = nth_node->next;
+                last_node = last_node->next;
+            }
+
+            i++;
         }
-        
-        if(fast_ptr == nullptr) { // This means the head node has to be removed
-            return head->next;
+
+        if(n_minus_one_node) {
+            n_minus_one_node->next = nth_node->next; // skip nth node
+        } else {
+            head = head->next; // nth node is the first node
         }
-        
-        while(fast_ptr != nullptr) {
-            fast_ptr = fast_ptr->next;
-            
-            if(fast_ptr != nullptr) slow_ptr = slow_ptr->next;
-        }
-        
-        slow_ptr->next = slow_ptr->next->next; // skip the node
-        
         return head;
+
     }
 };
