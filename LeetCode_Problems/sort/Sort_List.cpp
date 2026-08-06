@@ -22,8 +22,6 @@ public:
         ListNode* slow = head;
         ListNode* fast = head;
 
-        if(head == NULL) return NULL;
-
         ListNode* prev = NULL;
         while(fast && fast->next) {
             prev = slow;
@@ -31,18 +29,22 @@ public:
             fast = fast->next->next;
         }
 
-        if(prev) prev->next = NULL;
-        return slow;
+        if(prev) {
+            prev->next = NULL; // Break the link at mid
+        }
+        return slow; // mid (2nd Linked list)
     }
 
     ListNode* merge(ListNode* l1, ListNode* l2) {
 
         ListNode* head = NULL;
-        ListNode* curr_node = head;
+        ListNode* curr_node = head; // current tail pointer
 
+        // Merge list 1 and 2
         while(l1 && l2) {
 
             if(l1->val < l2->val) {
+                // list 1 element
                 if(head == NULL) {
                     head = l1;
                     curr_node = l1;
@@ -50,9 +52,10 @@ public:
                     curr_node->next = l1;
                     curr_node = curr_node->next;
                 }
-
                 l1 = l1->next;
+
             } else {
+                // list 2 element
                 if(head == NULL) {
                     head = l2;
                     curr_node = l2;
@@ -65,6 +68,7 @@ public:
 
         }
 
+        // Link rest of list 1
         if(l1) {
             if(head == NULL) {
                 head = l1;
@@ -73,6 +77,7 @@ public:
             }
         }
 
+        // Link rest of list 2
         if(l2) {
             if(head == NULL) {
                 head = l2;
@@ -89,6 +94,7 @@ public:
         ListNode* mid_node = getMidNode(head);
 
         if(mid_node == head) {
+            // single node case // nothing to sort
             return head;
         }
 
