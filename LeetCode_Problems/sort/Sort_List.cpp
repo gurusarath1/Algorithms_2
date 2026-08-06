@@ -94,16 +94,6 @@ public:
 
         ListNode* left_head = mergeSort(head);
         ListNode* right_head = mergeSort(mid_node);
-
-        if(left_head && right_head) {
-            return merge(left_head, right_head);
-        } else if(left_head) {
-            return left_head;
-        } else if(right_head) {
-            return right_head;
-        } else {
-            return NULL;
-        }
-
+        return merge(left_head, right_head);
     }
 };
