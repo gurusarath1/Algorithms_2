@@ -32,7 +32,7 @@ public:
     int next(int price) {
         
         int ret = 1;
-        while(!stk.empty() && stk.top().first <= price) {
+        while(!stk.empty() && stk.top().first <= price) { // monotonic stack logic
             ret = stk.top().second + ret;
             stk.pop();
         }
