@@ -1,56 +1,59 @@
 class Solution {
 public:
+
+/*
+Given an array of integers nums sorted in non-decreasing order, find the starting and ending position of a given target value.
+
+If target is not found in the array, return [-1, -1].
+
+You must write an algorithm with O(log n) runtime complexity.
+
+
+*/
+
     vector<int> searchRange(vector<int>& nums, int target) {
-
-        vector<int> ret;
-
-        int start_index = get_start_index(nums, target);
-        int end_index = get_end_index(nums, target);
-
-        ret.push_back(start_index);
-        ret.push_back(end_index);
-
-        return ret;
+        return vector<int>{find_start(nums, target), find_end(nums, target)};
     }
 
-    int get_start_index(vector<int>& nums, int target) {
-        int low = 0;
-        int high = nums.size() - 1;
+    int find_start(vector<int>& num, int target) {
+        int l = 0;
+        int h = num.size() - 1;
+        int ans = -1;
 
-        while(low <= high) {
-            int mid = low + (high - low) / 2;
+        while(l <= h) {
+            int m = l + (h - l) / 2;
 
-            if(nums[mid] >= target) {
-                high = mid - 1;
+            if(num[m] == target) {
+                h = m - 1;
+                ans = m;
+            } else if(num[m] < target) {
+                l = m + 1;
             } else {
-                low = mid + 1;
+                h = m - 1;
             }
-
         }
-        if(low == nums.size()) return -1;
-        if(nums[low] != target) return -1;
 
-        return low;
+        return ans;
     }
 
-    int get_end_index(vector<int>& nums, int target) {
-        int low = 0;
-        int high = nums.size() - 1;
+    int find_end(vector<int>& num, int target) {
+        int l = 0;
+        int h = num.size() - 1;
+        int ans = -1;
 
-        while(low <= high) {
-            int mid = low + (high - low) / 2;
+        while(l <= h) {
+            int m = l + (h - l) / 2;
 
-            if(nums[mid] > target) {
-                high = mid - 1;
+            if(num[m] == target) {
+                l = m + 1;
+                ans = m;
+            } else if(num[m] < target) {
+                l = m + 1;
             } else {
-                low = mid + 1;
+                h = m - 1;
             }
-
         }
 
-        if(high == -1) return -1;
-        if(nums[high] != target) return -1;
-
-        return high;
+        return ans;
     }
 };
