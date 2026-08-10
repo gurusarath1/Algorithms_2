@@ -39,6 +39,7 @@ public:
     }
 };
 
+//----------------------
 
 class Solution {
 public:
@@ -60,9 +61,9 @@ public:
         priority_queue<PQ_TYPE, vector<PQ_TYPE>, Compare > pq;
 
         for(vector<int> &point : points) {
-            pq.push( PQ_TYPE{dist(point[0], point[1]), point} );
+            pq.push( PQ_TYPE{dist(point[0], point[1]), point} );  // <------ diff
 
-            if(pq.size() > k) pq.pop(); // helps reducing the insertion time
+            if(pq.size() > k) pq.pop(); // helps reducing the insertion time  // <------ diff
         }
 
         vector<vector<int>> ret;
