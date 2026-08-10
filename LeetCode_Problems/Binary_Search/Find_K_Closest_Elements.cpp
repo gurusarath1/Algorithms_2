@@ -1,92 +1,72 @@
+/*
+Given a sorted integer array arr, two integers k and x, return the k closest integers to x in the array.
+The result should also be sorted in ascending order.
+
+An integer a is closer to x than an integer b if:
+
+|a - x| < |b - x|, or
+|a - x| == |b - x| and a < b
+*/
+
 class Solution {
 public:
     vector<int> findClosestElements(vector<int>& arr, int k, int x) {
 
-        // Step 1: Find the first closest element to x
+        int l = 0;
+        int h = arr.size() - 1;
 
-        int low = 0;
-        int high = arr.size() - 1;
-        int first_closest_num_index = -1;
-        int sub_arry_start_index = -1;
-        int sub_arry_end_index = -1;
+        while(l <= h) {
+            int m = l + (h - l) / 2;
 
-        while(low <= high) {
-            int mid = low + (high - low) / 2;
-
-            if(arr[mid] == x) {
-                first_closest_num_index = mid; // If x is found, then mid index is the first closest index
-                break;
-            } else if(arr[mid] > x) {
-                high = mid - 1;
+            if(arr[m] < x) {
+                l = m + 1;
             } else {
-                low = mid + 1;
+                h = m - 1;
             }
         }
 
-        // If x is not in the array, index high or low will have the first closest number
-        if(first_closest_num_index == -1) {
-            
-            if(high == -1) { // x less than all elements in the array
-                first_closest_num_index = low;
-            } else if (low == arr.size()) { // x greater than all elements in the array
-                first_closest_num_index = high;
-            } else if( abs(arr[high] - x) > abs(arr[low] - x) ) { // high or low index is the closest
-                first_closest_num_index = low;
-            } else {
-                first_closest_num_index = high;
-            }
-        }
+        // l - is the first element greater than x
 
+        // Collect the k numbers with two pointers
+        int ptr1 = l-1;
+        int ptr2 = l;
         vector<int> ret;
+        for(int i=0; i<k; i++) {
 
-        if(high == -1) { // first k elements
-            sub_arry_start_index = first_closest_num_index;
-            sub_arry_end_index = k - 1;
-        } else if(low == arr.size()) { // last k elements
-            sub_arry_start_index = first_closest_num_index - k + 1;
-            sub_arry_end_index = first_closest_num_index;
-        } else {
+            if(ptr1 < arr.size() && ptr2 < arr.size()
+               && ptr1 >= 0 && ptr2 >= 0) {
 
-            // Step 2: Two pointer algo to find the range
+                int n1 = arr[ptr1];
+                int n2 = arr[ptr2];
 
-            int ptr_1 = first_closest_num_index - 1;
-            int ptr_2 = first_closest_num_index + 1;
-            int num_values_collected = 1; // 1 value already collected (first closest number)
-
-            while(num_values_collected < k) {
-                if( abs(arr[ptr_1] - x) > abs(arr[ptr_2] - x) ) {
-                    ptr_2++;
-                    num_values_collected++;
-
-                    // reached end of array ?
-                    if(ptr_2 == arr.size()) {
-                        ptr_1 -= (k - num_values_collected);
-                        num_values_collected = k;
-                        break;
-                    }
+                if(abs(n1 - x) < abs(n2 - x)) {
+                    ret.push_back(n1);
+                    ptr1--;
+                } else if(abs(n1 - x) > abs(n2 - x)) {
+                    ret.push_back(n2);
+                    ptr2++;
+                } else if(n1 < n2) {
+                    ret.push_back(n1);
+                    ptr1--;
                 } else {
-                    ptr_1--;
-                    num_values_collected++;
-
-                    // reached the beginning of array ?
-                    if(ptr_1 == -1) {
-                        ptr_2 += (k - num_values_collected);
-                        num_values_collected = k;
-                        break;
-                    }
+                    ret.push_back(n2);
+                    ptr2++;
                 }
+
+            } else if(ptr1 < arr.size() && ptr1 >= 0) {
+                    int n1 = arr[ptr1];
+                    ret.push_back(n1);
+                    ptr1--;
+            } else {
+                    int n2 = arr[ptr2];
+                    ret.push_back(n2);
+                    ptr2++;
             }
 
-            // Start and end indices
-            sub_arry_start_index = ptr_1 + 1;
-            sub_arry_end_index = ptr_2 - 1;
         }
 
-        // Create the subarray;
-        for(int i=sub_arry_start_index; i<=sub_arry_end_index; i++) {
-            ret.push_back(arr[i]);
-        }
+        sort(ret.begin(), ret.end()); // answer expected in sorted order
+
         return ret;
-        
     }
 };
