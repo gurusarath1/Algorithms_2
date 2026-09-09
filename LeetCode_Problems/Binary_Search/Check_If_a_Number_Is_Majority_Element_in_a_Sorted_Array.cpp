@@ -1,3 +1,9 @@
+/*
+Given an integer array nums sorted in non-decreasing order and an integer target, return true if target is a majority element, or false otherwise.
+
+A majority element in an array nums is an element that appears more than nums.length / 2 times in the array.
+*/
+
 class Solution {
 public:
     bool isMajorityElement(vector<int>& nums, int target) {
